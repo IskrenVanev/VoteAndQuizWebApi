@@ -72,7 +72,11 @@ function Register() {
     };
 
     return (
-        <div className="register-container">
+    <>
+     <div className="flower-design">
+            <img src="src\assets\flower.webp" alt="" />
+        </div>
+    <div className="register-container">
             <h3>Register</h3>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -115,6 +119,8 @@ function Register() {
             </form>
             {error && <p className="error">{error}</p>}
         </div>
+    </>
+        
     );
 }
 

@@ -30,7 +30,15 @@ const VoteList = () => {
         })
     }
 
+    const closeIframe = () => {
+        setChosenVote(null);
+    };
+
     return (
+        <>
+         <div className="flower-design">
+            <img src="src\assets\flower.webp" alt="" />
+        </div>
         <div className="vote-list-container">
             <h1>Votes</h1>
             <button className="show-votes-btn" onClick={fetchVotes}>Show Votes</button>
@@ -40,6 +48,7 @@ const VoteList = () => {
                     {error && <p className="error-message">Error: Log in to see the Votes!</p>}
                     <ul className="vote-list">
                         {votes.map(vote => (
+                            vote.showVote == 1 &&(
                             <li key={vote.id} 
                             className="balloon"
                             onClick={() => openIframeWithVote(vote.id)}
@@ -48,22 +57,24 @@ const VoteList = () => {
                                 <span>Ends in: {vote.voteEndDate}</span>
                                 
                             </li>
+                            )
                         ))}
                     </ul>
                     {/* Show vote only when it's selected */}
                     {chosenVote && (
-                        <div className='iframe-container'>
+                         <div id="iframe-container" onClick={closeIframe}>
                             <iframe 
                                 src={`https://localhost:7055/api/Votes/Details/${chosenVote.id}`}
                                 title="Vote Details"
-                                width="600"
-                                height="400"
+                                onClick={e => e.stopPropagation()} // prevent closing when clicking iframe
                             />
+                            <button className="close-btn" onClick={closeIframe}>✖</button>
                         </div>
                     )}
                 </div>
             )}
         </div>
+        </>
     );
 };
 

@@ -33,6 +33,10 @@ const Home = () => {
     }, []);
 
     return (
+        <>
+         <div className="flower-design">
+            <img src="src\assets\flower.webp" alt="" />
+        </div>
         <div className="homePage-container">
             <div className="content-container">
                 {/* Quiz facts container on the left */}
@@ -87,6 +91,7 @@ const Home = () => {
                 </p>
             </div>
         </div>
+        </>
     );
 };
 

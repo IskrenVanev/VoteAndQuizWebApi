@@ -52,7 +52,12 @@ function Login() {
     };
 
     return (
+        <>
+        <div className="flower-design">
+            <img src="src\assets\flower.webp" alt="" />
+        </div>
         <div className="login-container">
+            
             <h3>Log In</h3>
             <form onSubmit={handleSubmit}>
         <div>
@@ -103,6 +108,8 @@ function Login() {
     </form>
 
         </div>
+        </>
+        
     );
 }
 

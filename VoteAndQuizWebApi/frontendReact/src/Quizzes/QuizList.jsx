@@ -20,6 +20,10 @@ const QuizList = () => {
     };
 
     return (
+        <>
+         <div className="flower-design">
+            <img src="src\assets\flower.webp" alt="" />
+        </div>
         <div className='quiz-list-container'>
             <h1>Quizzes</h1>
             <button className='show-quizes-btn' onClick={fetchQuizzes}>Show Quizzes</button>
@@ -35,6 +39,7 @@ const QuizList = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 
