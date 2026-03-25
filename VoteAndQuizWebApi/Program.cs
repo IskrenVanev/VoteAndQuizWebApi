@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using VoteAndQuizWebApi.Models;
 using VoteAndQuizWebApi.Utility;
 using System.Security.Claims;
+using VoteAndQuizWebApi.Services;
+using VoteAndQuizWebApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IVoteRepository, VoteRepository>();
 builder.Services.AddScoped<IVoteOptionRepository, VoteOptionRepository>();
+builder.Services.AddScoped<IQuizzesService, QuizzesService>();
+builder.Services.AddScoped<IVotesService, VotesService>();
 
 builder.Services.AddCors(options =>
 {
@@ -107,19 +111,3 @@ void SeedDatabase()
         dbInitializer.SeedData();
     }
 }
-
-
-
-
-
-
-
-
-
-//builder.Services.AddIdentity<User, IdentityRole>(options =>
-//{
-//    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-//    options.User.RequireUniqueEmail = true;
-//})
-//.AddEntityFrameworkStores<ApplicationDbContext>()
-//.AddDefaultTokenProviders();
